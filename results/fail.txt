@@ -1,0 +1,60 @@
+command: k6 run --quiet --no-color --no-usage-report --summary-mode full --summary-time-unit ms --log-output stdout --summary-export results/fail.json slo-test-fail.js
+started: 2026-11-18T13:31:34.429Z
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate>=0.90' rate=98.91%
+
+    http_req_duration{name:cart}
+    ✓ 'p(95)<20' p(95)=4.37ms
+
+    http_req_duration{name:report}
+    ✗ 'p(95)<100' p(95)=398.45ms
+
+    http_req_failed{name:pay}
+    ✓ 'rate<0.08' rate=3.24%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 2772   45.210192/s
+    checks_succeeded...: 98.91% 2742 out of 2772
+    checks_failed......: 1.08%  30 out of 2772
+
+    ✓ cart 200
+    ✓ report 200
+    ✗ pay 200
+      ↳  96% — ✓ 894 / ✗ 30
+
+    HTTP
+    http_req_blocked...............: avg=0.03ms    min=0.00ms    med=0.00ms    max=4.23ms    p(90)=0.00ms    p(95)=0.00ms    p(99)=1.00ms   
+    http_req_connecting............: avg=0.02ms    min=0.00ms    med=0.00ms    max=3.63ms    p(90)=0.00ms    p(95)=0.00ms    p(99)=0.00ms   
+    http_req_duration..............: avg=103.79ms  min=0.00ms    med=1.89ms    max=413.16ms  p(90)=348.02ms  p(95)=377.73ms  p(99)=403.12ms 
+      { expected_response:true }...: avg=104.91ms  min=0.00ms    med=1.91ms    max=413.16ms  p(90)=348.94ms  p(95)=377.93ms  p(99)=403.14ms 
+      { name:cart }................: avg=1.65ms    min=0.00ms    med=1.15ms    max=17.62ms   p(90)=3.11ms    p(95)=4.37ms    p(99)=10.21ms  
+      { name:report }..............: avg=308.50ms  min=202.95ms  med=308.64ms  max=413.16ms  p(90)=388.54ms  p(95)=398.45ms  p(99)=406.32ms 
+    http_req_failed................: 1.08%  30 out of 2772
+      { name:pay }.................: 3.24%  30 out of 924
+    http_req_receiving.............: avg=0.21ms    min=0.00ms    med=0.00ms    max=7.02ms    p(90)=0.79ms    p(95)=1.00ms    p(99)=1.15ms   
+    http_req_sending...............: avg=0.03ms    min=0.00ms    med=0.00ms    max=2.53ms    p(90)=0.00ms    p(95)=0.00ms    p(99)=0.83ms   
+    http_req_tls_handshaking.......: avg=0.00ms    min=0.00ms    med=0.00ms    max=0.00ms    p(90)=0.00ms    p(95)=0.00ms    p(99)=0.00ms   
+    http_req_waiting...............: avg=103.55ms  min=0.00ms    med=1.55ms    max=412.49ms  p(90)=347.86ms  p(95)=377.53ms  p(99)=402.86ms 
+    http_reqs......................: 2772   45.210192/s
+
+    EXECUTION
+    iteration_duration.............: avg=1313.05ms min=1205.37ms med=1312.68ms max=1427.41ms p(90)=1393.12ms p(95)=1402.35ms p(99)=1414.03ms
+    iterations.....................: 924    15.070064/s
+    vus............................: 5      min=5          max=20
+    vus_max........................: 20     min=20         max=20
+
+    NETWORK
+    data_received..................: 695 kB 11 kB/s
+    data_sent......................: 247 kB 4.0 kB/s
+
+
+
+time="2026-11-18T21:32:35+08:00" level=error msg="thresholds on metrics 'http_req_duration{name:report}' have been crossed"
+
+exit=99

@@ -1,0 +1,4 @@
+pass: requests=2769; successful=2728; failed=41; cart_p95_ms=3.62; report_p95_ms=398.93; pay_error_pct=4.44; availability_pct=98.52
+chaos: requests=5667; successful=4944; failed=723; cart_p95_ms=3.53; report_p95_ms=396.03; pay_error_pct=15.93; availability_pct=87.24
+fail: requests=2772; successful=2742; failed=30; cart_p95_ms=4.37; report_p95_ms=398.45; pay_error_pct=3.25; availability_pct=98.92
+chaos: availability=4944/5667=87.24%; request_budget=floor(5667*0.10)=566; failures=723; over_budget=157; recovery_p95_ms=11126.10; recovery_samples=20
