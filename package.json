@@ -5,7 +5,8 @@
   "description": "Local API from the Lab 3 instructions",
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js"
+    "check": "node --check server.js && node --check slo-test.js && node --check slo-test-fail.js && node --check run-experiments.cjs",
+    "experiments": "node run-experiments.cjs"
   },
   "dependencies": {
     "express": "^5.3.0"
