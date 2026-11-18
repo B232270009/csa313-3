@@ -3,15 +3,12 @@
 Оюутны нэр: Н. Төгөлдөр
 Оюутны код: B232270009
 
-Локал Express API дээр чанарын сценарио бичиж, хэмжүүрүүдийг SLO болон k6 threshold болгон шалгав. Хэвийн тест PASS, crash оруулсан тест availability болон reliability дээр FAIL, зориуд чангалсан report threshold FAIL болсон.
+Local Express API дээр чанарын сценарио бичиж, хэмжүүрүүдийг SLO болон k6 threshold болгон шалгав. Хэвийн тест PASS, crash оруулсан тест availability болон reliability дээр FAIL, зориуд чангалсан report threshold FAIL болсон.
 
 ## Орчин
 
 `k6 version` командын гаралт ([эх файл](results/version.txt)):
 
-```text
-k6.exe v2.4.0 (commit/dd9395906d, go1.26.11, windows/amd64)
-```
 
 Windows PowerShell, Node.js v26.13.0, Express; API зөвхөн http://127.0.0.1:3000 дээр ажиллана. Node dependency хувилбарууд package-lock.json-д хадгалагдсан.
 
@@ -42,15 +39,6 @@ Cart нь I/O хүлээлтгүй тул 200 мс-ээс хатуу 20 мс б�
 
 
 ## Ажиллуулах
-
-Төслийн үндсэн хавтаснаас:
-
-```powershell
-cd .\Lab3
-npm.cmd ci
-npm.cmd run check
-npm.cmd run experiments
-```
 
 Runner нь portable k6-г ../.tools/k6/k6-v2.4.0-windows-amd64/k6.exe замаас ашиглана. Тусдаа суулгасан k6 ашиглах бол run-experiments.cjs-ийн k6 замыг тохируулна. Туршилтууд 1 минут, 2 минут, 1 минут гэсэн дарааллаар ажиллана. Runner өөрөө асаасан API процессоо chaos тестийн 30 дахь секундэд зогсоож, 10 секунд хүлээгээд дахин асаана. Энэ нь Ctrl+C ба гараар дахин асаах үйлдлийг давтагдах байдлаар автоматжуулсан. Бүх тестийн дараа API-г зогсооно. 3000 порт өмнө нь ашиглагдаж байвал runner туршилт эхлүүлэхгүй.
 
@@ -88,7 +76,7 @@ VU бүрийн анхны cart холболтын алдаанаас дараа
 
 Availability-г cart эсвэл health probe-ийн хугацааны түүврээр, reliability-г сервер хүрэх боломжтой үеийн pay HTTP 500 / хүрсэн pay хүсэлтээр тусгаарлан хэмжиж болно. Энэ лабораторийн өгсөн SLI-г хэвээр үлдээсэн тул одоогийн pay error rate-д сүлжээний алдаа давхар багтсан.
 
-## Зориудын FAIL
+## Зориуд FAIL
 
 slo-test-fail.js нь бусад босгыг хадгалж, report-ийн p95 босгыг 450 мс-ээс 100 мс болгосон. Хэмжсэн report p95 398.45 мс тул p(95)<100 нөхцөл зөрчигдсөн. [fail.txt](results/fail.txt)-ийн THRESHOLDS хэсгийн report мөр, төгсгөлийн threshold зөрчсөн лог, exit=99 нь нотолгоо болно. Cart-ийн босгыг 50 мс болгоход localhost дээр хурдан хэвээр учраас найдвартай FAIL үүсгэхгүй. CI нь k6 процессын 99 exit code-оор шалгалтыг амжилтгүй болгох боломжтой.
 
