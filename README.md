@@ -1,6 +1,6 @@
 # Лаборатори 3 Чанарын сценарио SLO ба k6 threshold
 
-Оюутны нэр: [нэрээ нөхөх]
+Оюутны нэр: Н. Төгөлдөр
 Оюутны код: B232270009
 Огноо: 2026-11-18
 
@@ -99,4 +99,4 @@ slo-test-fail.js нь бусад босгыг хадгалж, report-ийн p95 
 
 ## Илгээх
 
-Багшийн docx болон node_modules нь .gitignore-д орсон. Public GitHub remote одоогоор тохируулаагүй тул push, Teams Turn in хийгдээгүй. README-ийн оюутны нэрийг нөхөөд, public репозиторийн холбоосыг Teams Assignment-д оруулж Turn in дарна.
+Багшийн docx болон node_modules нь .gitignore-д орсон. Public GitHub remote одоогоор тохируулаагүй тул push, Teams Turn in хийгдээгүй. Public репозиторийн холбоосыг Teams Assignment-д оруулж Turn in дарна.
