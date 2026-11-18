@@ -1,0 +1,59 @@
+command: k6 run --quiet --no-color --no-usage-report --summary-mode full --summary-time-unit ms --log-output stdout --summary-export results/pass.json slo-test.js
+started: 2026-11-18T13:28:31.645Z
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate>=0.90' rate=98.51%
+
+    http_req_duration{name:cart}
+    ✓ 'p(95)<20' p(95)=3.62ms
+
+    http_req_duration{name:report}
+    ✓ 'p(95)<450' p(95)=398.93ms
+
+    http_req_failed{name:pay}
+    ✓ 'rate<0.08' rate=4.44%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 2769   45.343674/s
+    checks_succeeded...: 98.51% 2728 out of 2769
+    checks_failed......: 1.48%  41 out of 2769
+
+    ✓ cart 200
+    ✓ report 200
+    ✗ pay 200
+      ↳  95% — ✓ 882 / ✗ 41
+
+    HTTP
+    http_req_blocked...............: avg=0.02ms    min=0.00ms    med=0.00ms    max=3.15ms    p(90)=0.00ms    p(95)=0.00ms    p(99)=0.76ms   
+    http_req_connecting............: avg=0.01ms    min=0.00ms    med=0.00ms    max=2.61ms    p(90)=0.00ms    p(95)=0.00ms    p(99)=0.00ms   
+    http_req_duration..............: avg=103.45ms  min=0.00ms    med=1.78ms    max=411.58ms  p(90)=345.92ms  p(95)=376.56ms  p(99)=403.58ms 
+      { expected_response:true }...: avg=104.98ms  min=0.00ms    med=1.80ms    max=411.58ms  p(90)=346.59ms  p(95)=376.72ms  p(99)=403.67ms 
+      { name:cart }................: avg=1.45ms    min=0.00ms    med=1.04ms    max=10.46ms   p(90)=2.92ms    p(95)=3.62ms    p(99)=8.78ms   
+      { name:report }..............: avg=307.75ms  min=201.76ms  med=308.08ms  max=411.58ms  p(90)=387.28ms  p(95)=398.93ms  p(99)=407.50ms 
+    http_req_failed................: 1.48%  41 out of 2769
+      { name:pay }.................: 4.44%  41 out of 923
+    http_req_receiving.............: avg=0.21ms    min=0.00ms    med=0.00ms    max=8.75ms    p(90)=0.82ms    p(95)=1.00ms    p(99)=1.12ms   
+    http_req_sending...............: avg=0.03ms    min=0.00ms    med=0.00ms    max=1.53ms    p(90)=0.00ms    p(95)=0.00ms    p(99)=0.84ms   
+    http_req_tls_handshaking.......: avg=0.00ms    min=0.00ms    med=0.00ms    max=0.00ms    p(90)=0.00ms    p(95)=0.00ms    p(99)=0.00ms   
+    http_req_waiting...............: avg=103.20ms  min=0.00ms    med=1.44ms    max=411.25ms  p(90)=345.53ms  p(95)=376.07ms  p(99)=403.35ms 
+    http_reqs......................: 2769   45.343674/s
+
+    EXECUTION
+    iteration_duration.............: avg=1312.01ms min=1206.82ms med=1312.94ms max=1417.10ms p(90)=1391.69ms p(95)=1402.38ms p(99)=1412.91ms
+    iterations.....................: 923    15.114558/s
+    vus............................: 3      min=3          max=20
+    vus_max........................: 20     min=20         max=20
+
+    NETWORK
+    data_received..................: 695 kB 11 kB/s
+    data_sent......................: 246 kB 4.0 kB/s
+
+
+
+
+exit=0

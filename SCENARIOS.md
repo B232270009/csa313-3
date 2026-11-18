@@ -18,7 +18,7 @@ Reliability, availability нь хувь хэмжүүр тул p95 болгон �
 | Performance | cart latency | p95 <20 мс | 20 VU, 1 минут | http_req_duration{name:cart}: p(95)<20 |
 | Reliability | pay error rate | <8% | 20 VU, 1 минут | http_req_failed{name:pay}: rate<0.08 |
 | Availability | HTTP 200 хүсэлтийн хувь | ≥90% | 20 VU, 2 минут, 10 секундийн crash | checks: rate>=0.90 |
-| Recovery | VU бүрийн анхны холболтын алдаанаас дараагийн амжилттай cart хүсэлт хүртэл | p95 <12000 мс | Chaos үед 20 VU тус бүр нэг ажиглалт | outage_recovery_ms: p(95)<12000; count>=20 |
+| Recovery | VU бүрийн анхны холболтын алдаанаас дараагийн амжилттай cart хүсэлт хүртэл | p95 <12000 мс | Chaos үед 20 VU тус бүр нэг ажиглалт | outage_recovery_ms: p(95)<12000; recovery_samples: count>=20 |
 | Report | report latency | p95 <450 мс | 20 VU, 1 минут | http_req_duration{name:report}: p(95)<450 |
 
 Cart нь I/O хүлээлтгүй тул 200 мс-ээс хатуу 20 мс босго сонгов. Pay-д зориудын 5% алдаа байгаа тул түүврийн хэлбэлзэлд зай үлдээж 8% сонгов. Report-ийн 200–400 мс хүлээлтэд scheduler болон HTTP overhead-д 50 мс зай үлдээв. Сэргэлтийн 12 секунд нь 10 секундийн зогсолт, процесс асах болон дараагийн probe хүртэлх хугацааг хамарна. 2 минутын availability 90% байвал цагаар тооцсон error budget = 120 × (1 − 0.90) = 12 секунд. Хүсэлтээр тооцсон budget = нийт хүсэлт × 0.10; энэ нь 12 секундтэй шууд адил биш.
