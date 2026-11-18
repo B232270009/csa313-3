@@ -35,3 +35,6 @@ setup алдаа гэж тооцохгүй. SLO хэмжилтийн хувьд 
 Setup-ийн 1 iteration гаралт SLO-ийн PASS нотолгоо болохгүй.
 
 Setup-ийг Codex AI туслахаар бэлдсэн.
+
+Setup шалгалт: `npm.cmd run check` амжилттай, k6 smoke-ийн 3/3 check амжилттай.
+Бүтэн гаралт: `results/setup-smoke.txt`. Шалгалтын дараа серверийг зогсоосон.

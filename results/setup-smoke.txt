@@ -1,0 +1,52 @@
+﻿
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: setup-smoke.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 1 max VUs, 10m30s max duration (incl. graceful stop):
+              * default: 1 iterations shared among 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
+
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate==1' rate=100.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 3       8.120869/s
+    checks_succeeded...: 100.00% 3 out of 3
+    checks_failed......: 0.00%   0 out of 3
+
+    ✓ cart endpoint ready
+    ✓ report endpoint ready
+    ✓ pay endpoint ready
+
+    HTTP
+    http_req_duration..............: avg=122.57ms min=1.02ms  med=1.12ms  max=365.57ms p(90)=292.68ms p(95)=329.12ms
+      { expected_response:true }...: avg=122.57ms min=1.02ms  med=1.12ms  max=365.57ms p(90)=292.68ms p(95)=329.12ms
+    http_req_failed................: 0.00% 0 out of 3
+    http_reqs......................: 3     8.120869/s
+
+    EXECUTION
+    iteration_duration.............: avg=368.8ms  min=368.8ms med=368.8ms max=368.8ms  p(90)=368.8ms  p(95)=368.8ms 
+    iterations.....................: 1     2.706956/s
+
+    NETWORK
+    data_received..................: 751 B 2.0 kB/s
+    data_sent......................: 267 B 723 B/s
+
+
+
+
+running (00m00.4s), 0/1 VUs, 1 complete and 0 interrupted iterations
+default ✓ [ 100% ] 1 VUs  00m00.4s/10m0s  1/1 shared iters
